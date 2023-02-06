@@ -1,5 +1,5 @@
 url = jdbc:mysql://localhost:3306/Project1Java?serverTimezone=EST5EDT
 
-username = Root
+username = root
 
 password = Root@123

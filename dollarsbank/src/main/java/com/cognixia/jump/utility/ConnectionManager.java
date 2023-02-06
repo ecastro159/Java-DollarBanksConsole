@@ -10,12 +10,12 @@ import java.util.Properties;;
 public class ConnectionManager {
     private static Connection connection = null;
 
-    private static void makeConnection(){
+    private static void makeConnection() {
         Properties props = new Properties();
 
-        try{
-            props.load(new FileInputStream("utility/config_properties"));
-        } catch(IOException e){
+        try {
+            props.load(new FileInputStream("src/main/java/com/cognixia/jump/utility/config_properties"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -31,8 +31,8 @@ public class ConnectionManager {
 
     }
 
-    public static Connection getConnection(){
-        if (connection == null){
+    public static Connection getConnection() {
+        if (connection == null) {
             makeConnection();
         }
         return connection;
