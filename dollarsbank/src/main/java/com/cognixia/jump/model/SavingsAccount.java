@@ -12,6 +12,13 @@ public class SavingsAccount {
         this.balance = balance;
     };
 
+    
+
+    @Override
+    public String toString() {
+        return "SavingsAccount [balance=" + balance + "]";
+    }
+
     // Withdraw Function
     public String withdraw(double Amount) {
         if (Amount > balance) {
@@ -21,6 +28,12 @@ public class SavingsAccount {
             setBalance(newBalance);
             return "You withdrew :" + Amount + "Your new balance is : " + getBalance();
         }
+    }
+
+    public String deposit(double Amount){
+        double newBalance =  balance + Amount;
+        setBalance(newBalance);
+        return "You deposited: " + Amount +" New Balance is: " + newBalance;
     }
 
 }
