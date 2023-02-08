@@ -1,6 +1,6 @@
 package com.cognixia.jump.model;
 
-public class SavingsAccount {
+public class AccountTransaction {
     // Amount
     private double balance;
 

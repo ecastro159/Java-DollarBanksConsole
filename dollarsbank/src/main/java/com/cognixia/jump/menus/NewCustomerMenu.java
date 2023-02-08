@@ -2,7 +2,6 @@ package com.cognixia.jump.menus;
 
 import java.util.Scanner;
 
-import com.cognixia.jump.DAO.CustomerDAO;
 import com.cognixia.jump.DAO.CustomerDAOClass;
 import com.cognixia.jump.model.Customer;
 import com.cognixia.jump.utility.ConsolePrinterUtility;
