@@ -10,6 +10,9 @@ public interface CustomerDAO {
     public int createCustomer(Customer customer);
     // Check if Login information is correct userName and Password Match
     public boolean checkLogIn(int userName, String password);
+
+    // Find Customer by id
+    public Customer foundCustomer(int userID);
     // Update Customer Information
     public Customer updateCustomer(Customer customer);
 

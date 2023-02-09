@@ -136,12 +136,53 @@ public class AccountDAOClass implements AccountDAO {
 
     @Override
     public void withdrawFromSavings(int account_id, double amount) {
+        String sql = "UPDATE Account SET savings_account = ? WHERE customer_id = ?";
+        // String sql = "INSERT INTO
+        // Account(account_id,customer_id,savings_account,checking_account)
+        // values(?,?,?,?)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, amount);
+            pstmt.setInt(2, account_id);
+
+            int rs = pstmt.executeUpdate();
+            if (rs == 1) {
+                System.out.println("New Balance is $" + amount);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Something went wrong!!!!");
+            System.out.println();
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void withdrawFromChecking(int account_id, double amount) {
-        // TODO Auto-generated method stub
+        String sql = "UPDATE Account SET checking_account = ? WHERE customer_id = ?";
+        // String sql = "INSERT INTO
+        // Account(account_id,customer_id,savings_account,checking_account)
+        // values(?,?,?,?)";
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, amount);
+            pstmt.setInt(2, account_id);
+
+            int rs = pstmt.executeUpdate();
+            if (rs == 1) {
+                System.out.println("New Balance is $" + amount);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Something went wrong!!!!");
+            System.out.println();
+            e.printStackTrace();
+        }
 
     }
 

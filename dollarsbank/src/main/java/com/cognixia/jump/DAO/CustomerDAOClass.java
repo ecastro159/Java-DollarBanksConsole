@@ -66,9 +66,16 @@ public class CustomerDAOClass implements CustomerDAO {
         return false;
     }
 
+    
     @Override
     public Customer updateCustomer(Customer customer) {
         // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Customer foundCustomer(int userID) {
+        
         return null;
     }
 
