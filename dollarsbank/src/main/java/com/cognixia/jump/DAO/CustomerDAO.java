@@ -12,7 +12,7 @@ public interface CustomerDAO {
     public boolean checkLogIn(int userName, String password);
 
     // Find Customer by id
-    public Customer foundCustomer(int userID);
+    public Customer customerInfo(int userID);
     // Update Customer Information
     public Customer updateCustomer(Customer customer);
 

@@ -94,7 +94,7 @@ public class AccountDAOClass implements AccountDAO {
 
             int rs = pstmt.executeUpdate();
             if (rs == 1) {
-                System.out.println("New Balance is $" + amount);
+                System.out.println("New Balance is in Saving: $" + amount);
                 System.out.println();
             }
 
@@ -121,7 +121,7 @@ public class AccountDAOClass implements AccountDAO {
 
             int rs = pstmt.executeUpdate();
             if (rs == 1) {
-                System.out.println("New Balance is $" + amount);
+                System.out.println("New Balance is in Checking: $" + amount);
                 System.out.println();
             }
 
@@ -147,7 +147,7 @@ public class AccountDAOClass implements AccountDAO {
 
             int rs = pstmt.executeUpdate();
             if (rs == 1) {
-                System.out.println("New Balance is $" + amount);
+                System.out.println("New Balance is in Savings: $" + amount);
                 System.out.println();
             }
 
@@ -174,7 +174,7 @@ public class AccountDAOClass implements AccountDAO {
 
             int rs = pstmt.executeUpdate();
             if (rs == 1) {
-                System.out.println("New Balance is $" + amount);
+                System.out.println("New Balance is in Checking: $" + amount);
                 System.out.println();
             }
 

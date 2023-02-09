@@ -2,6 +2,8 @@ package com.cognixia.jump.menus;
 
 import java.util.Scanner;
 
+import javax.script.ScriptContext;
+
 import com.cognixia.jump.DAO.AccountDAOClass;
 import com.cognixia.jump.DAO.TransactionDAOClass;
 import com.cognixia.jump.utility.ConsolePrinterUtility;
@@ -33,8 +35,7 @@ public class AccountMenu {
 
             // Fund Transfer
             if (ans.equals("3")) {
-
-                break;
+                transfer(sc, userId);
             }
 
             // Transfer History
@@ -141,4 +142,65 @@ public class AccountMenu {
         }
 
     }
+    // Pick from the following accounts to Transfer from
+    public void transfer(Scanner sc, int userId){
+        msg.pickAccountToTransfer();
+        String choose = sc.nextLine().trim().toLowerCase();
+        System.out.println();
+        if (choose.equals("1")) {
+            msg.pickAmount();
+            String amount = sc.nextLine().trim().toLowerCase();
+            // Checks if Input is Double
+            try {
+                double money = Double.parseDouble(amount);
+
+                double currentBalanceInChecking = sqlBank.currentBalanceInChecking(userId);
+                double newBalanceInChecking = currentBalanceInChecking - money;
+
+                double currentBalanceInSavings = sqlBank.currentBalanceInSavings(userId);
+                double newBalanceInSavings = currentBalanceInSavings + money;
+
+                // System.out.println("Successfully Withdrew $" + money);
+                sqlBank.withdrawFromChecking(userId, newBalanceInChecking);
+                sqlBank.depositToSavings(userId, newBalanceInSavings);
+                
+
+                // sqlHistory.addToHistory(userId, "Withdraw/Checking", money);
+                sqlHistory.addToHistory(userId, "Transfer From Checking -> Savings", money);
+
+            } catch (Exception e) {
+                System.out.println("Please Enter Amount in Dollars");
+            }
+        }
+
+        if (choose.equals("2")) {
+            msg.pickAmount();
+            String amount = sc.nextLine().trim().toLowerCase();
+            // Checks if Input is Double
+            try {
+                double money = Double.parseDouble(amount);
+
+                double currentBalanceInChecking = sqlBank.currentBalanceInChecking(userId);
+                double newBalanceInChecking = currentBalanceInChecking + money;
+
+                double currentBalanceInSavings = sqlBank.currentBalanceInSavings(userId);
+                double newBalanceInSavings = currentBalanceInSavings - money;
+
+                // System.out.println("Successfully Withdrew $" + money);
+                sqlBank.withdrawFromSavings(userId, newBalanceInChecking);
+                sqlBank.depositToChecking(userId, newBalanceInSavings);
+
+                sqlHistory.addToHistory(userId, "Transfer From Savings -> Checking", money);
+
+
+            } catch (Exception e) {
+                System.out.println("Please Enter Amount in Dollars");
+            }
+        }
+
+    }
+
+
 }
+
+

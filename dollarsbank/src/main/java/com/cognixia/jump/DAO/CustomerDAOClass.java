@@ -74,8 +74,31 @@ public class CustomerDAOClass implements CustomerDAO {
     }
 
     @Override
-    public Customer foundCustomer(int userID) {
-        
+    public Customer customerInfo(int userID) {
+        String sql = "select * from customer where customer_id = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                String firstName = rs.getString("first_name");
+                String lastName = rs.getString("last_name");
+                String contactInfo = rs.getString("contact_number");
+                String password = rs.getString("user_password");
+                Customer customer = new Customer(firstName, lastName, contactInfo, password);
+                // System.out.println("Customer found: "+ firstName);
+                return customer;
+
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Could not get entry");
+            e.printStackTrace();
+            return null;
+        }
         return null;
     }
 

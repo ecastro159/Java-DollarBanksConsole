@@ -48,6 +48,8 @@ public class Customer {
         this.password = password;
     }
 
+    public Customer(){};
+
     public Customer(String firstName, String lastName, String contactInfo, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

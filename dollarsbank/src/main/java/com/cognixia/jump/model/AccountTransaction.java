@@ -45,7 +45,7 @@ public class AccountTransaction {
     @Override
     public String toString() {
         return "AccountTransaction [transactionID: " + transactionID + ", userID: " + userID + ", transaction_type: "
-                + transaction_type + ", amount: " + amount + "]";
+                + transaction_type + ", amount: $" + amount + "]";
     }
 
     

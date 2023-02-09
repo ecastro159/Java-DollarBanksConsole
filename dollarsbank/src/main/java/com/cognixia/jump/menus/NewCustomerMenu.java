@@ -41,11 +41,12 @@ public class NewCustomerMenu {
 
         if (created != 0) {
             customer.setUserID(created);
+            System.out.println();
             System.out.println("New Account was Created with the Following Info: ");
             System.out.println(customer.toString());
             System.out.println("Balance in Checking Account: $"+ balance);
             System.out.println();
-            System.out.println("Your Sign-In Credential are");
+            System.out.println("Your Sign-In Credentials are");
             System.out.println("UserID = " + customer.getUserID());
             System.out.println("Password: " + customer.getPassword());
             System.out.println();
