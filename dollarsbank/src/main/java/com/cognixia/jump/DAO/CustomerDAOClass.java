@@ -53,7 +53,7 @@ public class CustomerDAOClass implements CustomerDAO {
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                System.out.println("Welcome");
+                System.out.println();
                 return true;
             }
         } catch (SQLException e) {

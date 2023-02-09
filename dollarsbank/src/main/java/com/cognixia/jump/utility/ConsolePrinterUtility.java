@@ -68,7 +68,7 @@ public class ConsolePrinterUtility {
     }
 
     public void pickAmount(){
-        System.out.print("Type in amount $: ");
+        System.out.print("Type in amount: $");
     }
 
 

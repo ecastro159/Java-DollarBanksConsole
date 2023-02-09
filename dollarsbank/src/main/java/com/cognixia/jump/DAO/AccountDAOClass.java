@@ -19,14 +19,12 @@ public class AccountDAOClass implements AccountDAO {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, account_id);
 
-
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 amount = rs.getDouble("checking_account");
             }
-            
+
             return amount;
-            
 
         } catch (SQLException e) {
             System.out.println("Invalid SQL Statement");
@@ -37,10 +35,23 @@ public class AccountDAOClass implements AccountDAO {
 
     @Override
     public double currentBalanceInSavings(int account_id) {
-        // TODO Auto-generated method stub
 
+        String sql = "SELECT savings_account FROM Account WHERE customer_id = ?";
+        try {
+            double amount = 0;
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, account_id);
 
-        return 0;
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                amount = rs.getDouble("savings_account");
+            }
+            return amount;
+        } catch (SQLException e) {
+            System.out.println("Invalid SQL Statement");
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
@@ -57,7 +68,7 @@ public class AccountDAOClass implements AccountDAO {
             pstmt.setDouble(4, amount);
 
             int rs = pstmt.executeUpdate();
-            if(rs ==1){
+            if (rs == 1) {
                 System.out.println("Added Initial Deposit");
             }
 
@@ -66,20 +77,70 @@ public class AccountDAOClass implements AccountDAO {
             System.out.println("Something went wrong!!!!");
             e.printStackTrace();
         }
-        
-        
-    }
-    
-    @Override
-    public void deposit(int account_id, double amount, int accountType) {
-        // TODO Auto-generated method stub
-
-
 
     }
 
     @Override
-    public void withdraw(int account_id, double amount) {
+    public void depositToSavings(int account_id, double amount) {
+
+        String sql = "UPDATE Account SET savings_account = ? WHERE customer_id = ?";
+        // String sql = "INSERT INTO
+        // Account(account_id,customer_id,savings_account,checking_account)
+        // values(?,?,?,?)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, amount);
+            pstmt.setInt(2, account_id);
+
+            int rs = pstmt.executeUpdate();
+            if (rs == 1) {
+                System.out.println("New Balance is $" + amount);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Something went wrong!!!!");
+            System.out.println();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void depositToChecking(int account_id, double amount) {
+        String sql = "UPDATE Account SET checking_account = ? WHERE customer_id = ?";
+        // String sql = "INSERT INTO
+        // Account(account_id,customer_id,savings_account,checking_account)
+        // values(?,?,?,?)";
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, amount);
+            pstmt.setInt(2, account_id);
+
+            int rs = pstmt.executeUpdate();
+            if (rs == 1) {
+                System.out.println("New Balance is $" + amount);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Something went wrong!!!!");
+            System.out.println();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void withdrawFromSavings(int account_id, double amount) {
+
+    }
+
+    @Override
+    public void withdrawFromChecking(int account_id, double amount) {
         // TODO Auto-generated method stub
 
     }
@@ -89,5 +150,4 @@ public class AccountDAOClass implements AccountDAO {
         // TODO Auto-generated method stub
 
     }
-
 }

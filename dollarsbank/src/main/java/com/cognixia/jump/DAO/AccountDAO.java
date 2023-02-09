@@ -12,9 +12,13 @@ public interface AccountDAO {
 
     public void depositNewAccount(int account_id, double amount);
 
-    public void deposit(int account_id, double amount, int accountType);
+    public void depositToSavings(int account_id, double amount);
 
-    public void withdraw(int account_id, double amount);
+    public void depositToChecking(int account_id, double amount);
+
+    public void withdrawFromSavings(int account_id, double amount);
+
+    public void withdrawFromChecking(int account_id, double amount);
 
     public void transfer(int account_id, double amount);
 }
