@@ -22,8 +22,8 @@ public class CustomerDAOClass implements CustomerDAO {
             pstmt.setString(3, customer.getLastName());
             pstmt.setString(4, customer.getContactInfo());
             pstmt.setString(5, customer.getPassword());
-
-            int i = pstmt.executeUpdate();
+            pstmt.executeUpdate();
+            
             ResultSet rs = pstmt.getGeneratedKeys();
             int generatedKey = 0;
             if (rs.next()) {

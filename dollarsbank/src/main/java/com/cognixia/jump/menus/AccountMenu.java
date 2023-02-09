@@ -2,6 +2,7 @@ package com.cognixia.jump.menus;
 
 import java.util.Scanner;
 
+
 import com.cognixia.jump.utility.ConsolePrinterUtility;
 
 public class AccountMenu {
@@ -15,11 +16,13 @@ public class AccountMenu {
             // Deposit to Account
             if(ans.equals("1")){
                 msg.pickAccount();
+                deposit(sc);
 
             }
             // Withdraw from Account
             if(ans.equals("2")){
                 msg.pickAccount();
+                
             }
 
             // Fund Transfer
@@ -45,6 +48,23 @@ public class AccountMenu {
 
         }
 
+    }
+
+
+
+    public void deposit(Scanner sc){
+        String ans = sc.nextLine().trim().toLowerCase();
+        int account = Integer.parseInt(ans);
+        if(account == 1){
+            msg.pickAmount();
+            String amount = sc.nextLine().trim().toLowerCase();
+            try {
+                double money = Double.parseDouble(amount);
+                
+            } catch (Exception e) {
+                System.out.println("Please Enter Amount in Dollars");
+            }
+        }
     }
     
 }

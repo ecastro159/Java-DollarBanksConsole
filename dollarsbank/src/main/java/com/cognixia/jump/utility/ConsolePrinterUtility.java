@@ -67,6 +67,10 @@ public class ConsolePrinterUtility {
         System.out.println("2: Savings Account");
     }
 
+    public void pickAmount(){
+        System.out.print("Type in amount $: ");
+    }
+
 
     public void invalidOption(){
         System.out.println("Please choose one of the options listed");
