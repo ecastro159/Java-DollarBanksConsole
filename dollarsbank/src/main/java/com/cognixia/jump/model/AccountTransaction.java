@@ -8,6 +8,7 @@ public class AccountTransaction {
     private int userID;
     private String transaction_type;
     private double amount;
+    
     public int getTransactionID() {
         return transactionID;
     }

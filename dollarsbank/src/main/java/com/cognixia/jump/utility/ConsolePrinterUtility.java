@@ -2,14 +2,17 @@ package com.cognixia.jump.utility;
 
 
 public class ConsolePrinterUtility {
+    ColorConfig color = new ColorConfig();
 
     public void welcomeMessage(){
+
+
         String welcomeMessage = "| Welcome to Random Bank |";
         int length = welcomeMessage.length();
 
-        System.out.println(padding(length));
+        System.out.println(color.ANSI_CYAN+padding(length));
         System.out.println(welcomeMessage);
-        System.out.println(padding(length));
+        System.out.println(padding(length)+ color.ANSI_RESET);
 
         System.out.println("1. Create New Account");
         System.out.println("2. Login");
