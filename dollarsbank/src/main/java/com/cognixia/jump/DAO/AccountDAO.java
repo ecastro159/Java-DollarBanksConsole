@@ -1,9 +1,5 @@
 package com.cognixia.jump.DAO;
 
-import java.util.List;
-
-import com.cognixia.jump.model.Account;
-
 public interface AccountDAO {
 
     public double currentBalanceInChecking(int account_id);

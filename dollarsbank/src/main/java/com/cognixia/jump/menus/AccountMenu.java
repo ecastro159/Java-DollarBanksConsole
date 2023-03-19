@@ -2,8 +2,6 @@ package com.cognixia.jump.menus;
 
 import java.util.Scanner;
 
-import javax.script.ScriptContext;
-
 import com.cognixia.jump.DAO.AccountDAOClass;
 import com.cognixia.jump.DAO.TransactionDAOClass;
 import com.cognixia.jump.utility.ConsolePrinterUtility;
@@ -13,7 +11,7 @@ public class AccountMenu {
     ConsolePrinterUtility msg = new ConsolePrinterUtility();
     AccountDAOClass sqlBank = new AccountDAOClass();
     TransactionDAOClass sqlHistory = new TransactionDAOClass();
-    TransactionHistoryMenu purchesList = new TransactionHistoryMenu();
+    TransactionHistoryMenu purchaseList = new TransactionHistoryMenu();
     CustomerInfoMenu info = new CustomerInfoMenu();
 
     public void accountOptionMenu(Scanner sc, int userId) {
@@ -40,7 +38,7 @@ public class AccountMenu {
 
             // Transfer History
             if (ans.equals("4")) {
-                purchesList.history(userId);
+                purchaseList.history(userId);
             }
 
             // Customer Info
@@ -72,7 +70,7 @@ public class AccountMenu {
                 System.out.println("Successfully deposited $" + money);
                 sqlBank.depositToChecking(userId, newBalance);
 
-                sqlHistory.addToHistory(userId, "Deposit/Checking" ,money);
+                sqlHistory.addToHistory(userId, "Deposit/Checking", money);
 
             } catch (Exception e) {
                 System.out.println("Please Enter Amount in Dollars");
@@ -142,8 +140,9 @@ public class AccountMenu {
         }
 
     }
+
     // Pick from the following accounts to Transfer from
-    public void transfer(Scanner sc, int userId){
+    public void transfer(Scanner sc, int userId) {
         msg.pickAccountToTransfer();
         String choose = sc.nextLine().trim().toLowerCase();
         System.out.println();
@@ -163,7 +162,6 @@ public class AccountMenu {
                 // System.out.println("Successfully Withdrew $" + money);
                 sqlBank.withdrawFromChecking(userId, newBalanceInChecking);
                 sqlBank.depositToSavings(userId, newBalanceInSavings);
-                
 
                 // sqlHistory.addToHistory(userId, "Withdraw/Checking", money);
                 sqlHistory.addToHistory(userId, "Transfer From Checking -> Savings", money);
@@ -192,7 +190,6 @@ public class AccountMenu {
 
                 sqlHistory.addToHistory(userId, "Transfer From Savings -> Checking", money);
 
-
             } catch (Exception e) {
                 System.out.println("Please Enter Amount in Dollars");
             }
@@ -200,7 +197,4 @@ public class AccountMenu {
 
     }
 
-
 }
-
-
